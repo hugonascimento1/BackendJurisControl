@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: backend-juriscontrol
+    env: java
+    region: us-east-1 # Virginia (US East)
+    buildCommand: "./mvnw clean install -DskipTests"
+    startCommand: "java -jar target/*.jar"
+    envVars:
+      - key: JAVA_VERSION
+        value: 17
+      - key: SUPABASE_URL
+        value: ${SUPABASE_URL}
+      - key: SUPABASE_USER
+        value: ${SUPABASE_USER}
+      - key: SUPABASE_PASSWORD
+        value: ${SUPABASE_PASSWORD}
