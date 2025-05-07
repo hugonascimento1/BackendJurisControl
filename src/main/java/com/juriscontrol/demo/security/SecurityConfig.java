@@ -86,7 +86,8 @@ public class SecurityConfig {
                                 "/auth/login/advogado",
                                 "/auth/login/admin",
                                 "/administradores/cadastrar",
-                                "/advogados/cadastrar"
+                                "/advogados/cadastrar",
+                                "/sem-hibernacao"
                         // "/advogados/cadastrar",
                         // "/clientes/cadastrar"
                         ).permitAll() // Permite acesso às rotas de cadastro
