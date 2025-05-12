@@ -177,6 +177,19 @@
 					</excludes>
 				</configuration>
 			</plugin>
+			<!-- Plugin para carregar o arquivo .env e definir as variáveis de ambiente no Maven
+			<plugin>
+				<groupId>io.github.cdimascio</groupId>
+				<artifactId>dotenv-maven-plugin</artifactId>
+				<version>1.0.1</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>load</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin> -->
 		</plugins>
 	</build>
 

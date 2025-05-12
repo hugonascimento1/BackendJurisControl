@@ -12,6 +12,9 @@ HELP.md
 .springBeans
 .sts4-cache
 
+# env
+.env
+
 ### IntelliJ IDEA ###
 .idea
 *.iws
