@@ -25,21 +25,21 @@ import org.springframework.web.bind.annotation.PathVariable;
 import java.util.List;
 
 @RestController
-@RequestMapping("/advogados")
+@RequestMapping("/api")
 public class AdvogadoController {
 
     @Autowired
     private AdvogadoService advogadoService;
 
     // post advogado
-    @PostMapping("/cadastrar")
+    @PostMapping("/cadastrar-advogado")
     public ResponseEntity<Advogado> cadastrarAdvogado(@RequestBody @Valid CriarAdvogadoDTO dto) {
         Advogado advogadoNovo = advogadoService.cadastrarAdvogado(dto);
         return new ResponseEntity<>(advogadoNovo, HttpStatus.CREATED);
     }
 
     // put advogado (ID)
-    @PutMapping("/atualizar/{id}")
+    @PutMapping("/atualizar-advogado/{id}")
     public ResponseEntity<Advogado> atualizarAdvogado(@PathVariable Long id,
             @RequestBody @Valid AtualizarAdvogadoDTO dto) {
         try {
@@ -51,7 +51,7 @@ public class AdvogadoController {
     }
 
     // get advogado por ID
-    @GetMapping("/buscar/{id}")
+    @GetMapping("/buscar-advogado/{id}")
     public ResponseEntity<ListaTudoAdvogadoDTO> buscarPorIdAdvogado(@PathVariable Long id) {
         try {
             ListaTudoAdvogadoDTO advogado = advogadoService.buscarPorIdAdvogado(id);
@@ -62,20 +62,20 @@ public class AdvogadoController {
     }
 
     // get advogados
-    @GetMapping("/buscar-todos")
+    @GetMapping("/buscar-todos-advogados")
     public ResponseEntity<List<ListaTudoAdvogadoDTO>> buscarTodosAdvogados() {
         List<ListaTudoAdvogadoDTO> advogados = advogadoService.buscarTodosAdvogados();
         return ResponseEntity.ok(advogados);
     }
 
-    @GetMapping("/buscar-todos-info-resumido")
+    @GetMapping("/buscar-todos-info-resumido-advogados")
     public ResponseEntity<List<ListaAdvogadoDTO>> buscarTodosAdvogadosResumo() {
         List<ListaAdvogadoDTO> advogados = advogadoService.buscarTodosAdvogadosResumo();
         return ResponseEntity.ok(advogados);
     }
 
     // get advogado resumido (ID)
-    @GetMapping("/buscar-resumido/{id}")
+    @GetMapping("/buscar-advogado-resumido/{id}")
     public ResponseEntity<ListaAdvogadoDTO> buscarPorIdAdvogadoResumido(@PathVariable Long id) {
         try {
             ListaAdvogadoDTO advogado = advogadoService.buscarPorIdAdvogadoResumo(id);
@@ -86,7 +86,7 @@ public class AdvogadoController {
     }
 
     // delete advogado (ID)
-    @DeleteMapping("/deletar/{id}")
+    @DeleteMapping("/deletar-advogado/{id}")
     public ResponseEntity<String> deletarAdvogado(@PathVariable Long id) {
         try {
             advogadoService.deletarAdvogado(id);

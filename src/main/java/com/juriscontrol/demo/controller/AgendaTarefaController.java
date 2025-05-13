@@ -25,14 +25,14 @@ import com.juriscontrol.demo.service.AgendaTarefaService;
 import jakarta.validation.Valid;
 
 @RestController
-@RequestMapping("/agenda-tarefas")
+@RequestMapping("/api")
 public class AgendaTarefaController {
     
     @Autowired
     private AgendaTarefaService agendaTarefaService;
 
     //post tarefa
-    @PostMapping("/criar")
+    @PostMapping("/cadastrar-tarefa")
     public ResponseEntity<AgendaTarefa> adicionarAgendaTarefa(CriarAgendaTarefaDTO dto) {
         
         try {
@@ -44,7 +44,7 @@ public class AgendaTarefaController {
     }
 
     //put tarefa (ID)
-    @PutMapping("/atualizar/{id}")
+    @PutMapping("/atualizar-tarefa/{id}")
     public ResponseEntity<AgendaTarefa> atualizarAgendaTarefa(@PathVariable Long id, @Valid @RequestBody AtualizarAgendaTarefaDTO tarefa) {
         
         try {
@@ -58,7 +58,7 @@ public class AgendaTarefaController {
     }
 
     //get tarefa por ID
-    @GetMapping("/buscar/{id}")
+    @GetMapping("/buscar-tarefa/{id}")
     public ResponseEntity<ListaAgendaTarefaDTO> buscarPorIdAgendaTarefa(@PathVariable Long id) {
 
         try {
@@ -70,7 +70,7 @@ public class AgendaTarefaController {
     }
 
     //get tarefas
-    @GetMapping("/buscarTodas/tarefas")
+    @GetMapping("/buscar-todas-tarefas")
     public ResponseEntity<List<ListaAgendaTarefaDTO>> buscarTodasTarefas() {
         
         List<ListaAgendaTarefaDTO> tarefas = agendaTarefaService.buscarTodasAgendaTarefa();
@@ -78,7 +78,7 @@ public class AgendaTarefaController {
     }
 
     //delete tarefa (ID)
-    @DeleteMapping("/deletar/{id}")
+    @DeleteMapping("/deletar-tarefa/{id}")
     public ResponseEntity<String> deletarAgendaTarefa(@PathVariable Long id) {
 
         try {

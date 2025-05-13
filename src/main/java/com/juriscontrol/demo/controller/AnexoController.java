@@ -28,13 +28,13 @@ import com.juriscontrol.demo.service.AnexoService;
 
 
 @RestController
-@RequestMapping("/anexos")
+@RequestMapping("/api")
 public class AnexoController {
 
     @Autowired
     private AnexoService anexoService;
 
-    @PostMapping(value = "/cadastrar", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    @PostMapping(value = "/cadastrar-anexo", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public ResponseEntity<Anexo> adicionarAnexo(@ModelAttribute CriarAnexoDTO dto) {
         try {
             Anexo anexoNovo = anexoService.criarAnexo(dto);
@@ -62,7 +62,7 @@ public class AnexoController {
     // }
 
     // post varios anexos
-    @PostMapping(value = "/cadastrar-varios", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    @PostMapping(value = "/cadastrar-varios-anexos", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public ResponseEntity<List<Anexo>> adicionarVariosAnexos(@ModelAttribute CriarVariosAnexosDTO dtos) {
         try {
             List<Anexo> anexosNovos = anexoService.criarVariosAnexos(dtos);
@@ -75,7 +75,7 @@ public class AnexoController {
     }
 
     // put anexo (ID)
-    @PutMapping("/atualizar{id}")
+    @PutMapping("/atualizar-anexo/{id}")
     public ResponseEntity<Anexo> atualizarAnexo(@PathVariable Long id, AtualizarAnexoDTO dto) {
         try {
             Anexo anexoNovo = anexoService.atualizarAnexo(id, dto);
@@ -90,7 +90,7 @@ public class AnexoController {
     }
 
     // get anexo por ID
-    @GetMapping("/buscar/{id}")
+    @GetMapping("/buscar-anexo/{id}")
     public ResponseEntity<ListaAnexoDTO> buscarAnexoPorId(@PathVariable Long id) {
 
         try {
@@ -102,7 +102,7 @@ public class AnexoController {
     }
 
     // get anexos
-    @GetMapping("/buscar-todos")
+    @GetMapping("/buscar-todos-anexos")
     public ResponseEntity<List<ListaAnexoDTO>> buscarTodosAnexos() {
 
         List<ListaAnexoDTO> anexos = anexoService.buscarTodosAnexos();
@@ -110,7 +110,7 @@ public class AnexoController {
     }
 
     // get baixar anexo (ID)
-    @GetMapping("/baixar/{id}")
+    @GetMapping("/baixar-anexo/{id}")
     public ResponseEntity<byte[]> baixarAnexo(@PathVariable Long id) {
         try {
             Anexo anexo = anexoService.baixarAnexo(id);
@@ -126,7 +126,7 @@ public class AnexoController {
     }
 
     // delete anexo (ID)
-    @DeleteMapping("/deletar/{id}")
+    @DeleteMapping("/deletar-anexo/{id}")
     public ResponseEntity<String> deletarAnexo(@PathVariable Long id) {
 
         try {

@@ -25,21 +25,21 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @RestController
-@RequestMapping("/administradores")
+@RequestMapping("/api")
 public class AdministradorController {
 
     @Autowired
     private AdministradorService administradorService;
 
     // post administrador
-    @PostMapping("/cadastrar")
+    @PostMapping("/cadastrar-administrador")
     public ResponseEntity<Administrador> cadastrarAdministrador(@RequestBody @Valid CriarAdministradorDTO dto) {
         Administrador administrador = administradorService.cadastrarAdministrador(dto);
         return new ResponseEntity<>(administrador, HttpStatus.CREATED);
     }
 
     // put administrador (ID)
-    @PutMapping("/atualizar/{id}")
+    @PutMapping("/atualizar-administrador/{id}")
     public ResponseEntity<Administrador> atualizarAdministrador(@PathVariable Long id,
             @RequestBody @Valid AtualizarAdministradorDTO dto) {
         try {
@@ -51,7 +51,7 @@ public class AdministradorController {
     }
 
     // get administrador por ID
-    @GetMapping("/buscar/{id}")
+    @GetMapping("/buscar-administrador/{id}")
     public ResponseEntity<ListaTudoAdministradorDTO> buscarPorIdAdministrador(@PathVariable Long id) {
         try {
             ListaTudoAdministradorDTO administrador = administradorService.buscarPorIdAdministrador(id);
@@ -62,14 +62,14 @@ public class AdministradorController {
     }
 
     // get administradores
-    @GetMapping("/buscar-todos")
+    @GetMapping("/buscar-todos-administradores")
     public ResponseEntity<List<ListaTudoAdministradorDTO>> buscarTodosAdministradores() {
         List<ListaTudoAdministradorDTO> administradores = administradorService.buscarTodosAdministradores();
         return ResponseEntity.ok(administradores);
     }
 
     // delete administrador (ID)
-    @DeleteMapping("/deletar/{id}")
+    @DeleteMapping("/deletar-administrador/{id}")
     public ResponseEntity<String> deletarAdministrador(@PathVariable Long id) {
         try {
             administradorService.deletarAdministrador(id);

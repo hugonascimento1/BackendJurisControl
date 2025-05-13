@@ -21,14 +21,14 @@ import com.juriscontrol.demo.model.Movimento;
 import com.juriscontrol.demo.service.MovimentoService;
 
 @RestController
-@RequestMapping("/movimentos")
+@RequestMapping("/api")
 public class MovimentoController {
     
     @Autowired
     private MovimentoService movimentoService;
 
         //post movimento
-        @PostMapping("/criar")
+        @PostMapping("/cadastrar-movimento")
         public ResponseEntity<Movimento> adicionarMovimento(CriarMovimentoDTO dto) {
             
             try {
@@ -40,7 +40,7 @@ public class MovimentoController {
         }
 
         //put movimento (ID)
-        @PutMapping("/atualizar/{id}")
+        @PutMapping("/atualizar-movimento/{id}")
         public ResponseEntity<Movimento> atualizarMovimento(Long id, CriarMovimentoDTO dto) {
             
             try {
@@ -54,7 +54,7 @@ public class MovimentoController {
         }
     
         //get movimento por ID
-        @GetMapping("/buscar/{id}")
+        @GetMapping("/buscar-movimento/{id}")
         public ResponseEntity<ListaMovimentoDTO> buscarPorIdMovimento(@PathVariable Long id) {
             
             try {
@@ -66,7 +66,7 @@ public class MovimentoController {
         }
     
         //get movimentos
-        @GetMapping("/buscarTodos/movimentos")
+        @GetMapping("/buscar-todos-movimentos")
         public ResponseEntity<List<ListaMovimentoDTO>> buscarTodosMovimentos() {
             
             List<ListaMovimentoDTO> movimentos = movimentoService.buscarTodosMovimentos();
@@ -74,7 +74,7 @@ public class MovimentoController {
         }
     
         //delete movimento (ID)
-        @DeleteMapping("/deletar/{id}")
+        @DeleteMapping("/deletar-movimento/{id}")
         public ResponseEntity<String> deletarMovimento(@PathVariable Long id) {
             
             try {

@@ -26,14 +26,14 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 
 @RestController
-@RequestMapping("/processos")
+@RequestMapping("/api")
 public class ProcessoController {
     
     @Autowired
     private ProcessoService processoService;
 
     //post processo
-    @PostMapping("/criar")
+    @PostMapping("/cadastrar-processo")
     public ResponseEntity<Processo> adicionarProcesso(CriarProcessoDTO dto) {
         
         try {
@@ -45,7 +45,7 @@ public class ProcessoController {
     }
 
     //put processo (ID)
-    @PutMapping("/atualizar/{id}")
+    @PutMapping("/atualizar-processo/{id}")
     public ResponseEntity<Processo> atualizarProcesso(@PathVariable Long id, @RequestBody AtualizarProcessoDTO dto) {
         
         try {
@@ -59,7 +59,7 @@ public class ProcessoController {
     }
 
     //get processo por ID
-    @GetMapping("/buscar/{id}")
+    @GetMapping("/buscar-processo/{id}")
     public ResponseEntity<ListaTudoProcessoDTO> buscarProcessoPorId(@PathVariable Long id) {
         
         try {
@@ -71,7 +71,7 @@ public class ProcessoController {
     }
 
     //get processos
-    @GetMapping("/buscarTodos/processos")
+    @GetMapping("/buscar-todos-processos")
     public ResponseEntity<List<ListaTudoProcessoDTO>> buscarTodosProcessos() {
         
         List<ListaTudoProcessoDTO> processos = processoService.buscarTodosProcessos();
@@ -79,7 +79,7 @@ public class ProcessoController {
     }
 
     //get processo por número (ID)
-    @GetMapping("/buscarPorNumero/{numero}")
+    @GetMapping("/buscar-processo-por-numero/{numero}")
     public ResponseEntity<ListaProcessoDTO> buscarPorNumeroDeProcesso(@PathVariable String numero) {
         
         try {
@@ -91,7 +91,7 @@ public class ProcessoController {
     }
 
     //delete processo (ID)
-    @DeleteMapping("/deletar/{id}")
+    @DeleteMapping("/deletar-processo/{id}")
     public ResponseEntity<String> deletarProcesso(@PathVariable Long id) {
         
         try {
