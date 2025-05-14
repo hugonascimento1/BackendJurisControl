@@ -5,6 +5,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.juriscontrol.demo.dto.CredenciaisDTO;
+import com.juriscontrol.demo.dto.LoginResponseDTO;
 import com.juriscontrol.demo.model.Administrador;
 import com.juriscontrol.demo.model.Advogado;
 import com.juriscontrol.demo.repository.AdministradorRepository;
@@ -26,7 +27,7 @@ public class AuthService {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
-    public String authenticateAdmin(CredenciaisDTO credenciaisDTO) {
+    public LoginResponseDTO authenticateAdmin(CredenciaisDTO credenciaisDTO) {
         String email = credenciaisDTO.getEmail();
         String senha = credenciaisDTO.getSenha();
 
@@ -34,15 +35,15 @@ public class AuthService {
                 .orElseThrow(() -> new RuntimeException("Credenciais inválidas para administrador."));
 
         if (passwordEncoder.matches(senha, administrador.getSenha())) {
-            System.out.println(
-                    "Login bem sucedido como administrador");
-            return jwtUtil.gerarToken(administrador.getEmail());
+            System.out.println("Login bem sucedido como administrador");
+            String token = jwtUtil.gerarToken(administrador.getEmail());
+            return new LoginResponseDTO(token, "administrador", administrador.getId());
         } else {
             throw new RuntimeException("Senha incorreta para administrador");
         }
     }
 
-    public String authenticateAdvogado(CredenciaisDTO credenciaisDTO) {
+    public LoginResponseDTO authenticateAdvogado(CredenciaisDTO credenciaisDTO) {
         String email = credenciaisDTO.getEmail();
         String senha = credenciaisDTO.getSenha();
 
@@ -51,7 +52,8 @@ public class AuthService {
 
         if (passwordEncoder.matches(senha, advogado.getSenha())) {
             System.out.println("Login bem-sucedido como advogado");
-            return jwtUtil.gerarToken(advogado.getEmail());
+            String token = jwtUtil.gerarToken(advogado.getEmail());
+            return new LoginResponseDTO(token, "advogado", advogado.getId());
         } else {
             throw new RuntimeException("Senha incorreta para advogado.");
         }

@@ -1,6 +1,7 @@
 package com.juriscontrol.demo.controller;
 
 import com.juriscontrol.demo.dto.CredenciaisDTO;
+import com.juriscontrol.demo.dto.LoginResponseDTO;
 import com.juriscontrol.demo.service.AuthService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -24,8 +25,8 @@ public class AuthController {
         }
 
         try {
-            String token = authService.authenticateAdmin(credenciais);
-            return ResponseEntity.ok(Map.of("token", token, "tipoUsuario", "administrador"));
+            LoginResponseDTO response = authService.authenticateAdmin(credenciais);
+            return ResponseEntity.ok(response);
         } catch (Exception e) {
             return ResponseEntity.status(401).body(Map.of("error", e.getMessage()));
         }
@@ -40,8 +41,8 @@ public class AuthController {
         }
 
         try {
-            String token = authService.authenticateAdvogado(credenciais);
-            return ResponseEntity.ok(Map.of("token", token, "tipoUsuario", "advogado"));
+            LoginResponseDTO response = authService.authenticateAdvogado(credenciais);
+            return ResponseEntity.ok(response);
         } catch (Exception e) {
             return ResponseEntity.status(401).body(Map.of("error", e.getMessage()));
         }
