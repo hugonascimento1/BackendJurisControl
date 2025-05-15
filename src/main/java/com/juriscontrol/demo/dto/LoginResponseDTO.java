@@ -13,4 +13,5 @@ public class LoginResponseDTO {
     private String token;
     private String tipoUsuario;
     private Long id;
+    private String nome;
 }

@@ -37,7 +37,7 @@ public class AuthService {
         if (passwordEncoder.matches(senha, administrador.getSenha())) {
             System.out.println("Login bem sucedido como administrador");
             String token = jwtUtil.gerarToken(administrador.getEmail());
-            return new LoginResponseDTO(token, "administrador", administrador.getId());
+            return new LoginResponseDTO(token, "administrador", administrador.getId(), administrador.getNome());
         } else {
             throw new RuntimeException("Senha incorreta para administrador");
         }
@@ -53,7 +53,7 @@ public class AuthService {
         if (passwordEncoder.matches(senha, advogado.getSenha())) {
             System.out.println("Login bem-sucedido como advogado");
             String token = jwtUtil.gerarToken(advogado.getEmail());
-            return new LoginResponseDTO(token, "advogado", advogado.getId());
+            return new LoginResponseDTO(token, "advogado", advogado.getId(), advogado.getNome());
         } else {
             throw new RuntimeException("Senha incorreta para advogado.");
         }
