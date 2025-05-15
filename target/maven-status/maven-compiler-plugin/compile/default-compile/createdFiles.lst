@@ -19,7 +19,6 @@ com\juriscontrol\demo\repository\ProcessoRepository.class
 com\juriscontrol\demo\exception\AgendaTarefaNotFoundException.class
 com\juriscontrol\demo\service\AnexoService.class
 com\juriscontrol\demo\model\AgendaTarefa.class
-com\juriscontrol\demo\config\CorsConfig.class
 com\juriscontrol\demo\dto\AdvogadoDTO\AtualizarAdvogadoDTO.class
 com\juriscontrol\demo\service\AdministradorService.class
 com\juriscontrol\demo\service\AuthService.class
@@ -38,6 +37,7 @@ com\juriscontrol\demo\dto\AnexoDTO\ListaAnexoDTO.class
 com\juriscontrol\demo\controller\AgendaTarefaController.class
 com\juriscontrol\demo\controller\AnexoController.class
 com\juriscontrol\demo\model\Anexo.class
+com\juriscontrol\demo\dto\LoginResponseDTO.class
 com\juriscontrol\demo\dto\MovimentoDTO\CriarMovimentoDTO.class
 com\juriscontrol\demo\dto\AdvogadoDTO\CriarAdvogadoDTO.class
 com\juriscontrol\demo\model\Movimento.class

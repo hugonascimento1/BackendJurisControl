@@ -144,6 +144,7 @@ public class SecurityConfig {
                 .csrf(csrf -> csrf.disable()) // Sintaxe corrigida para desabilitar CSRF
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(authorize -> authorize
+                        .requestMatchers(HttpMethod.OPTIONS, "/api/login/**").permitAll()
                         .requestMatchers(HttpMethod.POST, "/api/login/**").permitAll()
                         .requestMatchers(HttpMethod.POST, "/api/cadastrar-advogado").permitAll()
                         .requestMatchers(HttpMethod.POST, "/api/cadastrar-administrador").permitAll()
