@@ -21,8 +21,10 @@ public class ListaTudoProcessoDTO {
     private String vara;
     private String classeTipo;
     private String assuntosTitulo;
+    private String comarcaUF;
     private String status;
     private String nomeAutor;
+    private String telefoneCliente;
     private String advogadoAutor;
     private String nomeReu;
     private String advogadoReu;

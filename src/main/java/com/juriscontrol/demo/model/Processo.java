@@ -41,9 +41,13 @@ public class Processo {
     private String assuntosTitulo;
 
     @NonNull
+    private String comarcaUF;
+
+    @NonNull
     private String status;
 
     private String nomeAutor;
+    private String telefoneCliente;
     private String advogadoAutor;
     private String nomeReu;
     private String advogadoReu;

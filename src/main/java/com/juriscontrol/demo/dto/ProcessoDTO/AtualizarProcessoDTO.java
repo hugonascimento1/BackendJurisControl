@@ -15,13 +15,15 @@ import lombok.Setter;
 @Getter
 @Setter
 public class AtualizarProcessoDTO {
-    
+
     private Long id;
     private String vara;
     private String classeTipo;
     private String assuntosTitulo;
+    private String comarcaUF;
     private String status;
     private String nomeAutor;
+    private String telefoneCliente;
     private String advogadoAutor;
     private String nomeReu;
     private String advogadoReu;
