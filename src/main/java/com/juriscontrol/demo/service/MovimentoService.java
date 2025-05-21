@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.juriscontrol.demo.dto.MovimentoDTO.AtualizarMovimentoDTO;
 import com.juriscontrol.demo.dto.MovimentoDTO.CriarMovimentoDTO;
 import com.juriscontrol.demo.dto.MovimentoDTO.ListaMovimentoDTO;
 import com.juriscontrol.demo.exception.MovimentoNotFoundException;
@@ -38,7 +39,7 @@ public class MovimentoService {
     }   
 
     //atualizar movimento
-    public Movimento atualizarMovimento(Long id, CriarMovimentoDTO dto) throws ProcessoNotFoundException, MovimentoNotFoundException {
+    public Movimento atualizarMovimento(Long id, AtualizarMovimentoDTO dto) throws ProcessoNotFoundException, MovimentoNotFoundException {
         Processo processo = processoRepository.findById(dto.getProcessoId())    
             .orElseThrow(() -> new ProcessoNotFoundException("Processo não encontrado."));
         

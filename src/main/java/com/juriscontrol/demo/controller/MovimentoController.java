@@ -10,9 +10,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.juriscontrol.demo.dto.MovimentoDTO.AtualizarMovimentoDTO;
 import com.juriscontrol.demo.dto.MovimentoDTO.CriarMovimentoDTO;
 import com.juriscontrol.demo.dto.MovimentoDTO.ListaMovimentoDTO;
 import com.juriscontrol.demo.exception.MovimentoNotFoundException;
@@ -29,7 +31,7 @@ public class MovimentoController {
 
         //post movimento
         @PostMapping("/cadastrar-movimento")
-        public ResponseEntity<Movimento> adicionarMovimento(CriarMovimentoDTO dto) {
+        public ResponseEntity<Movimento> adicionarMovimento(@RequestBody CriarMovimentoDTO dto) {
             
             try {
                 Movimento movimentoNovo = movimentoService.criarMovimento(dto);
@@ -41,7 +43,7 @@ public class MovimentoController {
 
         //put movimento (ID)
         @PutMapping("/atualizar-movimento/{id}")
-        public ResponseEntity<Movimento> atualizarMovimento(Long id, CriarMovimentoDTO dto) {
+        public ResponseEntity<Movimento> atualizarMovimento(@PathVariable Long id, @RequestBody AtualizarMovimentoDTO dto) {
             
             try {
                 Movimento movimento = movimentoService.atualizarMovimento(id, dto);
