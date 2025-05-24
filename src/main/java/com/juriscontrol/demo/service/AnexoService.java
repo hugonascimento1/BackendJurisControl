@@ -119,6 +119,18 @@ public class AnexoService {
                 .collect(Collectors.toList());
     }
 
+    // buscar todos anexos por id
+    public List<ListaAnexoDTO> buscarTodosAnexosPorId(Long id) {
+        return anexoRepository.findAllByProcessoId(id).stream()
+                .map(anexo -> new ListaAnexoDTO(
+                        anexo.getId(),
+                        anexo.getNomeAnexo(),
+                        anexo.getTipoAnexo(),
+                        anexo.getAnexo(),
+                        anexo.getProcesso().getId()))
+                .collect(Collectors.toList());
+    }
+
     // baixar anexo
     public Anexo baixarAnexo(Long id) throws AnexoNotFoundException, IOException {
         Anexo anexo = anexoRepository.findById(id)

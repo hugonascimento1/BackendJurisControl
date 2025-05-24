@@ -70,6 +70,14 @@ public class MovimentoService {
             .toList();
     }
 
+    //buscar todos os movimentos por id
+    public List<ListaMovimentoDTO> buscarTodosMovimentosPorId(Long id) {
+        
+        return movimentoRepository.findAllByProcessoId(id).stream()
+            .map(ListaMovimentoDTO::new)
+            .toList();
+    }
+
     //deletar movimento
     public void deletarMovimento(Long id) throws MovimentoNotFoundException {
         Movimento movimento = movimentoRepository.findById(id)

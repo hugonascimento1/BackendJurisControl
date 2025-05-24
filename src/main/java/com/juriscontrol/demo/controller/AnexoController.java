@@ -46,21 +46,6 @@ public class AnexoController {
         }
     }
 
-    // post anexo
-    // @PostMapping(value = "/criar", consumes =
-    // MediaType.MULTIPART_FORM_DATA_VALUE)
-    // public ResponseEntity<Anexo> adicionarAnexo(CriarAnexoDTO dto) {
-
-    // try {
-    // Anexo anexoNovo = anexoService.criarAnexo(dto);
-    // return ResponseEntity.ok(anexoNovo);
-    // } catch (ProcessoNotFoundException e) {
-    // return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
-    // } catch (IOException e) {
-    // return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
-    // }
-    // }
-
     // post varios anexos
     @PostMapping(value = "/cadastrar-varios-anexos", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public ResponseEntity<List<Anexo>> adicionarVariosAnexos(@ModelAttribute CriarVariosAnexosDTO dtos) {
@@ -106,6 +91,14 @@ public class AnexoController {
     public ResponseEntity<List<ListaAnexoDTO>> buscarTodosAnexos() {
 
         List<ListaAnexoDTO> anexos = anexoService.buscarTodosAnexos();
+        return ResponseEntity.ok(anexos);
+    }
+
+    // get anexos (ID)
+    @GetMapping("/buscar-todos-anexos/{id}")
+    public ResponseEntity<List<ListaAnexoDTO>> buscarTodosAnexosPorId(@PathVariable Long id) {
+
+        List<ListaAnexoDTO> anexos = anexoService.buscarTodosAnexosPorId(id);
         return ResponseEntity.ok(anexos);
     }
 

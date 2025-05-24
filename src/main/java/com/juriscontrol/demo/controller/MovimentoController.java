@@ -74,6 +74,14 @@ public class MovimentoController {
             List<ListaMovimentoDTO> movimentos = movimentoService.buscarTodosMovimentos();
             return ResponseEntity.ok(movimentos);
         }
+
+        //get movimentos (ID)
+        @GetMapping("/buscar-todos-movimentos/{id}")
+        public ResponseEntity<List<ListaMovimentoDTO>> buscarTodosMovimentosPorId(@PathVariable Long id) {
+            
+            List<ListaMovimentoDTO> movimentos = movimentoService.buscarTodosMovimentosPorId(id);
+            return ResponseEntity.ok(movimentos);
+        }
     
         //delete movimento (ID)
         @DeleteMapping("/deletar-movimento/{id}")
