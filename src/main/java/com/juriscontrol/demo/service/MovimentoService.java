@@ -73,7 +73,7 @@ public class MovimentoService {
     //buscar todos os movimentos por id
     public List<ListaMovimentoDTO> buscarTodosMovimentosPorId(Long id) {
         
-        return movimentoRepository.findAllByProcessoId(id).stream()
+        return movimentoRepository.findById(id).stream()
             .map(ListaMovimentoDTO::new)
             .toList();
     }
