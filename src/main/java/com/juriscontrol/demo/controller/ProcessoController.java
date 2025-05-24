@@ -34,7 +34,7 @@ public class ProcessoController {
 
     //post processo
     @PostMapping("/cadastrar-processo")
-    public ResponseEntity<Processo> adicionarProcesso(CriarProcessoDTO dto) {
+    public ResponseEntity<Processo> adicionarProcesso(@RequestBody CriarProcessoDTO dto) {
         
         try {
             Processo processoNovo = processoService.criarProcesso(dto);

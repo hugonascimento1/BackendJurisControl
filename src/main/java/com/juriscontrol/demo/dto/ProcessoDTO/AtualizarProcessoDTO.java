@@ -2,6 +2,8 @@ package com.juriscontrol.demo.dto.ProcessoDTO;
 
 import java.util.List;
 
+import com.juriscontrol.demo.dto.AnexoDTO.CriarAnexoDTO;
+import com.juriscontrol.demo.dto.MovimentoDTO.CriarMovimentoDTO;
 import com.juriscontrol.demo.model.Anexo;
 import com.juriscontrol.demo.model.Movimento;
 
@@ -27,7 +29,7 @@ public class AtualizarProcessoDTO {
     private String advogadoAutor;
     private String nomeReu;
     private String advogadoReu;
-    private List<Movimento> movimentos;
-    private List<Anexo> anexoDocumentos;
+    //private List<CriarMovimentoDTO> movimentos;
+    //private List<CriarAnexoDTO> anexoDocumentos;
     private Long advogadoId;
 }

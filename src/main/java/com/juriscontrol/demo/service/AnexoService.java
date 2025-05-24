@@ -121,7 +121,7 @@ public class AnexoService {
 
     // buscar todos anexos por id
     public List<ListaAnexoDTO> buscarTodosAnexosPorId(Long id) {
-        return anexoRepository.findById(id).stream()
+        return anexoRepository.findByProcessoId(id).stream()
                 .map(anexo -> new ListaAnexoDTO(
                         anexo.getId(),
                         anexo.getNomeAnexo(),

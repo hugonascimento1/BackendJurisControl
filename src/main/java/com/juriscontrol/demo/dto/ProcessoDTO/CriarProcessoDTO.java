@@ -27,7 +27,7 @@ public class CriarProcessoDTO {
     private String advogadoAutor;
     private String nomeReu;
     private String advogadoReu;
-    private List<CriarMovimentoDTO> movimentos;
-    private List<CriarAnexoDTO> anexoDocumentos;
+    //private List<CriarMovimentoDTO> movimentos;
+    //private List<CriarAnexoDTO> anexoDocumentos;
     private Long advogadoId;
 }
