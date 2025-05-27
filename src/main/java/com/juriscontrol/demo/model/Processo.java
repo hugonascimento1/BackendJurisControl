@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -53,11 +54,11 @@ public class Processo {
     private String advogadoReu;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "processo")
+    @OneToMany(mappedBy = "processo", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Movimento> movimentos;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "processo")
+    @OneToMany(mappedBy = "processo", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Anexo> anexoDocumentos;
 
     @ManyToOne
