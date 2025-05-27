@@ -128,7 +128,6 @@ public class ProcessoService {
                 processo.getAdvogado() != null ? processo.getAdvogado().getId() : null);
     }
 
-    // (possíveis mudanças - verificar utilidade)
     // buscar todos os processos
     public List<ListaTudoProcessoDTO> buscarTodosProcessos() {
         return processoRepository.findAll().stream().map(processo -> {
