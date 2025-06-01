@@ -6,6 +6,7 @@ com\juriscontrol\demo\repository\MovimentoRepository.class
 com\juriscontrol\demo\dto\AnexoDTO\CriarAnexoDTO.class
 com\juriscontrol\demo\exception\AdvogadoNotFoundException.class
 com\juriscontrol\demo\service\ProcessoService.class
+com\juriscontrol\demo\dto\ProcessoDTO\ProcessosPorAdvogadoDTO.class
 com\juriscontrol\demo\security\JwtUtil.class
 com\juriscontrol\demo\service\AdvogadoService.class
 com\juriscontrol\demo\exception\UsuarioNotFoundException.class
@@ -36,6 +37,7 @@ com\juriscontrol\demo\controller\AuthController.class
 com\juriscontrol\demo\dto\AnexoDTO\ListaAnexoDTO.class
 com\juriscontrol\demo\controller\AgendaTarefaController.class
 com\juriscontrol\demo\controller\AnexoController.class
+com\juriscontrol\demo\controller\DashboardController.class
 com\juriscontrol\demo\model\Anexo.class
 com\juriscontrol\demo\dto\LoginResponseDTO.class
 com\juriscontrol\demo\dto\MovimentoDTO\CriarMovimentoDTO.class
@@ -61,3 +63,5 @@ com\juriscontrol\demo\dto\CredenciaisDTO.class
 com\juriscontrol\demo\dto\AnexoDTO\AtualizarAnexoDTO.class
 com\juriscontrol\demo\dto\MovimentoDTO\ListaMovimentoDTO.class
 com\juriscontrol\demo\dto\ProcessoDTO\ListaTudoProcessoDTO.class
+com\juriscontrol\demo\service\DashboardService.class
+com\juriscontrol\demo\dto\ProcessoDTO\ProcessosPorStatusDTO.class
