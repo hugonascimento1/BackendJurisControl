@@ -18,6 +18,8 @@ import com.juriscontrol.demo.exception.ProcessoNotFoundException;
 import com.juriscontrol.demo.model.Advogado;
 import com.juriscontrol.demo.model.Processo;
 import com.juriscontrol.demo.repository.AdvogadoRepository;
+import com.juriscontrol.demo.repository.AnexoRepository;
+import com.juriscontrol.demo.repository.MovimentoRepository;
 import com.juriscontrol.demo.repository.ProcessoRepository;
 
 @Service
@@ -28,6 +30,12 @@ public class ProcessoService {
 
     @Autowired
     private AdvogadoRepository advogadoRepository;
+
+    @Autowired
+    private MovimentoRepository movimentoRepository;
+
+    @Autowired
+    private AnexoRepository anexoRepository;
 
     // criar processo
     public Processo criarProcesso(CriarProcessoDTO dto) throws AdvogadoNotFoundException {
@@ -169,6 +177,47 @@ public class ProcessoService {
         }).collect(Collectors.toList());
     }
 
+    // buscar todos os processos por ID
+    public List<ListaTudoProcessoDTO> buscarTodosProcessosPorId(Long id) throws ProcessoNotFoundException {
+        return processoRepository.findByAdvogadoId(id).stream().map(processo -> {
+
+            List<ListaMovimentoDTO> movimentos = processo.getMovimentos() != null ? processo.getMovimentos().stream()
+                    .map(movimento -> new ListaMovimentoDTO(
+                            movimento.getId(),
+                            movimento.getNomeMovimento(),
+                            movimento.getTipo(),
+                            movimento.getData(),
+                            movimento.getProcesso() != null ? movimento.getProcesso().getId() : null))
+                    .collect(Collectors.toList()) : Collections.emptyList();
+
+            List<ListaAnexoDTO> anexos = processo.getAnexoDocumentos() != null ? processo.getAnexoDocumentos().stream()
+                    .map(anexo -> new ListaAnexoDTO(
+                            anexo.getId(),
+                            anexo.getNomeAnexo(),
+                            anexo.getTipoAnexo(),
+                            anexo.getAnexo(),
+                            anexo.getProcesso() != null ? anexo.getProcesso().getId() : null))
+                    .collect(Collectors.toList()) : Collections.emptyList();
+
+            return new ListaTudoProcessoDTO(
+                    processo.getId(),
+                    processo.getNumeroProcesso(),
+                    processo.getVara(),
+                    processo.getClasseTipo(),
+                    processo.getAssuntosTitulo(),
+                    processo.getComarcaUF(),
+                    processo.getStatus(),
+                    processo.getNomeAutor(),
+                    processo.getTelefoneCliente(),
+                    processo.getAdvogadoAutor(),
+                    processo.getNomeReu(),
+                    processo.getAdvogadoReu(),
+                    movimentos,
+                    anexos,
+                    processo.getAdvogado() != null ? processo.getAdvogado().getId() : null);
+        }).collect(Collectors.toList());
+    }
+
     // buscar processo por número
     public ListaProcessoDTO buscarPorNumeroProcesso(String numeroProcesso) throws ProcessoNotFoundException {
         Processo processo = processoRepository.findByNumeroProcesso(numeroProcesso)
@@ -184,6 +233,9 @@ public class ProcessoService {
     public void deletarProcesso(Long id) throws ProcessoNotFoundException {
         Processo processo = processoRepository.findById(id)
                 .orElseThrow(() -> new ProcessoNotFoundException("Processo não encontrado."));
+
+        movimentoRepository.deleteAllByProcessoId(id);
+        anexoRepository.deleteAllByProcessoId(id);
 
         processoRepository.delete(processo);
     }

@@ -11,4 +11,5 @@ import com.juriscontrol.demo.model.Anexo;
 public interface AnexoRepository extends JpaRepository<Anexo, Long> {
     
     List<Anexo> findByProcessoId(Long processoId);
+    void deleteAllByProcessoId(Long processoId);
 }

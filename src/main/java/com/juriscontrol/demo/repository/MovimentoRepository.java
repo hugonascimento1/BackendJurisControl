@@ -11,4 +11,5 @@ import com.juriscontrol.demo.model.Movimento;
 public interface MovimentoRepository extends JpaRepository<Movimento, Long> {
     
     List<Movimento> findByProcessoId(Long processoId);
+    void deleteAllByProcessoId(Long processoId);
 }

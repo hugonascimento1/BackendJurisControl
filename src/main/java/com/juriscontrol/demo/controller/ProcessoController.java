@@ -78,6 +78,18 @@ public class ProcessoController {
         return ResponseEntity.ok(processos);
     }
 
+    //get processos por id
+    @GetMapping("/buscar-todos-processos/{id}")
+    public ResponseEntity<List<ListaTudoProcessoDTO>> buscarTodosProcessosPorId(@PathVariable Long id) {
+        
+        try {
+            List<ListaTudoProcessoDTO> processos = processoService.buscarTodosProcessosPorId(id);
+            return ResponseEntity.ok(processos);
+        } catch (ProcessoNotFoundException e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+        }
+    }
+
     //get processo por número (ID)
     @GetMapping("/buscar-processo-por-numero/{numero}")
     public ResponseEntity<ListaProcessoDTO> buscarPorNumeroDeProcesso(@PathVariable String numero) {
