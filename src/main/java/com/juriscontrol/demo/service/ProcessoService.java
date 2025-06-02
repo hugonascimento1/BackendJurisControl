@@ -22,6 +22,8 @@ import com.juriscontrol.demo.repository.AnexoRepository;
 import com.juriscontrol.demo.repository.MovimentoRepository;
 import com.juriscontrol.demo.repository.ProcessoRepository;
 
+import jakarta.transaction.Transactional;
+
 @Service
 public class ProcessoService {
 
@@ -109,14 +111,14 @@ public class ProcessoService {
                         movimento.getProcesso() != null ? movimento.getProcesso().getId() : null))
                 .collect(Collectors.toList()) : Collections.emptyList();
 
-        List<ListaAnexoDTO> anexos = processo.getAnexoDocumentos() != null ? processo.getAnexoDocumentos().stream()
-                .map(anexo -> new ListaAnexoDTO(
-                        anexo.getId(),
-                        anexo.getNomeAnexo(),
-                        anexo.getTipoAnexo(),
-                        anexo.getAnexo(),
-                        anexo.getProcesso() != null ? anexo.getProcesso().getId() : null))
-                .collect(Collectors.toList()) : Collections.emptyList();
+        // List<ListaAnexoDTO> anexos = processo.getAnexoDocumentos() != null ? processo.getAnexoDocumentos().stream()
+        //         .map(anexo -> new ListaAnexoDTO(
+        //                 anexo.getId(),
+        //                 anexo.getNomeAnexo(),
+        //                 anexo.getTipoAnexo(),
+        //                 anexo.getAnexo(),
+        //                 anexo.getProcesso() != null ? anexo.getProcesso().getId() : null))
+        //         .collect(Collectors.toList()) : Collections.emptyList();
 
         return new ListaTudoProcessoDTO(
                 processo.getId(),
@@ -132,7 +134,7 @@ public class ProcessoService {
                 processo.getNomeReu(),
                 processo.getAdvogadoReu(),
                 movimentos,
-                anexos,
+                //anexos,
                 processo.getAdvogado() != null ? processo.getAdvogado().getId() : null);
     }
 
@@ -149,14 +151,14 @@ public class ProcessoService {
                             movimento.getProcesso() != null ? movimento.getProcesso().getId() : null))
                     .collect(Collectors.toList()) : Collections.emptyList();
 
-            List<ListaAnexoDTO> anexos = processo.getAnexoDocumentos() != null ? processo.getAnexoDocumentos().stream()
-                    .map(anexo -> new ListaAnexoDTO(
-                            anexo.getId(),
-                            anexo.getNomeAnexo(),
-                            anexo.getTipoAnexo(),
-                            anexo.getAnexo(),
-                            anexo.getProcesso() != null ? anexo.getProcesso().getId() : null))
-                    .collect(Collectors.toList()) : Collections.emptyList();
+        //     List<ListaAnexoDTO> anexos = processo.getAnexoDocumentos() != null ? processo.getAnexoDocumentos().stream()
+        //             .map(anexo -> new ListaAnexoDTO(
+        //                     anexo.getId(),
+        //                     anexo.getNomeAnexo(),
+        //                     anexo.getTipoAnexo(),
+        //                     anexo.getAnexo(),
+        //                     anexo.getProcesso() != null ? anexo.getProcesso().getId() : null))
+        //             .collect(Collectors.toList()) : Collections.emptyList();
 
             return new ListaTudoProcessoDTO(
                     processo.getId(),
@@ -172,7 +174,7 @@ public class ProcessoService {
                     processo.getNomeReu(),
                     processo.getAdvogadoReu(),
                     movimentos,
-                    anexos,
+                    //anexos,
                     processo.getAdvogado() != null ? processo.getAdvogado().getId() : null);
         }).collect(Collectors.toList());
     }
@@ -190,14 +192,14 @@ public class ProcessoService {
                             movimento.getProcesso() != null ? movimento.getProcesso().getId() : null))
                     .collect(Collectors.toList()) : Collections.emptyList();
 
-            List<ListaAnexoDTO> anexos = processo.getAnexoDocumentos() != null ? processo.getAnexoDocumentos().stream()
-                    .map(anexo -> new ListaAnexoDTO(
-                            anexo.getId(),
-                            anexo.getNomeAnexo(),
-                            anexo.getTipoAnexo(),
-                            anexo.getAnexo(),
-                            anexo.getProcesso() != null ? anexo.getProcesso().getId() : null))
-                    .collect(Collectors.toList()) : Collections.emptyList();
+        //     List<ListaAnexoDTO> anexos = processo.getAnexoDocumentos() != null ? processo.getAnexoDocumentos().stream()
+        //             .map(anexo -> new ListaAnexoDTO(
+        //                     anexo.getId(),
+        //                     anexo.getNomeAnexo(),
+        //                     anexo.getTipoAnexo(),
+        //                     anexo.getAnexo(),
+        //                     anexo.getProcesso() != null ? anexo.getProcesso().getId() : null))
+        //             .collect(Collectors.toList()) : Collections.emptyList();
 
             return new ListaTudoProcessoDTO(
                     processo.getId(),
@@ -213,7 +215,7 @@ public class ProcessoService {
                     processo.getNomeReu(),
                     processo.getAdvogadoReu(),
                     movimentos,
-                    anexos,
+                    //anexos,
                     processo.getAdvogado() != null ? processo.getAdvogado().getId() : null);
         }).collect(Collectors.toList());
     }
@@ -230,6 +232,7 @@ public class ProcessoService {
     }
 
     // deletar processo
+    @Transactional
     public void deletarProcesso(Long id) throws ProcessoNotFoundException {
         Processo processo = processoRepository.findById(id)
                 .orElseThrow(() -> new ProcessoNotFoundException("Processo não encontrado."));

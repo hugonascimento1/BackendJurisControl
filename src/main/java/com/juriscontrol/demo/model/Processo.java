@@ -57,9 +57,9 @@ public class Processo {
     @OneToMany(mappedBy = "processo")
     private List<Movimento> movimentos;
 
-    @JsonIgnore
-    @OneToMany(mappedBy = "processo")
-    private List<Anexo> anexoDocumentos;
+    // @JsonIgnore
+    // @OneToMany(mappedBy = "processo")
+    // private List<Anexo> anexoDocumentos;
 
     @ManyToOne
     @JoinColumn(name = "advogado_id")

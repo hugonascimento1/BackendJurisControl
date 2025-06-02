@@ -29,6 +29,6 @@ public class ListaTudoProcessoDTO {
     private String nomeReu;
     private String advogadoReu;
     private List<ListaMovimentoDTO> movimentos;
-    private List<ListaAnexoDTO> anexoDocumentos;
+    //private List<ListaAnexoDTO> anexoDocumentos;
     private Long advogadoId;
 }

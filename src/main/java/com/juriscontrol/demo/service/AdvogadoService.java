@@ -79,14 +79,14 @@ public class AdvogadoService {
                                                         processo.getId()))
                                         .collect(Collectors.toList());
 
-                        List<ListaAnexoDTO> anexosDTO = processo.getAnexoDocumentos().stream()
-                                        .map(anexo -> new ListaAnexoDTO(
-                                                        anexo.getId(),
-                                                        anexo.getNomeAnexo(),
-                                                        anexo.getTipoAnexo(),
-                                                        anexo.getAnexo(),
-                                                        processo.getId()))
-                                        .collect(Collectors.toList());
+                        // List<ListaAnexoDTO> anexosDTO = processo.getAnexoDocumentos().stream()
+                        //                 .map(anexo -> new ListaAnexoDTO(
+                        //                                 anexo.getId(),
+                        //                                 anexo.getNomeAnexo(),
+                        //                                 anexo.getTipoAnexo(),
+                        //                                 anexo.getAnexo(),
+                        //                                 processo.getId()))
+                        //                 .collect(Collectors.toList());
 
                         return new ListaTudoProcessoDTO(
                                         processo.getId(),
@@ -102,7 +102,7 @@ public class AdvogadoService {
                                         processo.getNomeReu(),
                                         processo.getAdvogadoReu(),
                                         movimentosDTO,
-                                        anexosDTO,
+                                        //anexosDTO,
                                         advogado.getId());
                 }).collect(Collectors.toList());
 
@@ -141,14 +141,14 @@ public class AdvogadoService {
                                                                 processo.getId()))
                                                 .collect(Collectors.toList());
 
-                                List<ListaAnexoDTO> anexosDTO = processo.getAnexoDocumentos().stream()
-                                                .map(anexo -> new ListaAnexoDTO(
-                                                                anexo.getId(),
-                                                                anexo.getNomeAnexo(),
-                                                                anexo.getTipoAnexo(),
-                                                                anexo.getAnexo(),
-                                                                processo.getId()))
-                                                .collect(Collectors.toList());
+                                // List<ListaAnexoDTO> anexosDTO = processo.getAnexoDocumentos().stream()
+                                //                 .map(anexo -> new ListaAnexoDTO(
+                                //                                 anexo.getId(),
+                                //                                 anexo.getNomeAnexo(),
+                                //                                 anexo.getTipoAnexo(),
+                                //                                 anexo.getAnexo(),
+                                //                                 processo.getId()))
+                                //                 .collect(Collectors.toList());
 
                                 return new ListaTudoProcessoDTO(
                                                 processo.getId(),
@@ -164,7 +164,7 @@ public class AdvogadoService {
                                                 processo.getNomeReu(),
                                                 processo.getAdvogadoReu(),
                                                 movimentosDTO,
-                                                anexosDTO,
+                                                //anexosDTO,
                                                 advogado.getId());
                         }).collect(Collectors.toList());
 
