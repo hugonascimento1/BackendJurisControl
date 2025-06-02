@@ -77,6 +77,14 @@ public class AgendaTarefaController {
         return ResponseEntity.ok(tarefas);
     }
 
+    //get tarefas por ID
+    @GetMapping("/buscar-todas-tarefas/{id}")
+    public ResponseEntity<List<ListaAgendaTarefaDTO>> buscarTodasTarefasPorId(@PathVariable Long id) {
+        
+        List<ListaAgendaTarefaDTO> tarefas = agendaTarefaService.buscarTodasAgendaTarefaPorId(id);
+        return ResponseEntity.ok(tarefas);
+    }
+
     //delete tarefa (ID)
     @DeleteMapping("/deletar-tarefa/{id}")
     public ResponseEntity<String> deletarAgendaTarefa(@PathVariable Long id) {

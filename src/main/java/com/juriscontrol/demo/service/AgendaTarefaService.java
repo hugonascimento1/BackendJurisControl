@@ -86,6 +86,14 @@ public class AgendaTarefaService {
             .map(ListaAgendaTarefaDTO::new)
             .toList();
     }
+
+    //buscar todas as tarefas por ID (advogado)
+    public List<ListaAgendaTarefaDTO> buscarTodasAgendaTarefaPorId(Long id) {
+        
+        return agendaTarefaRepository.findByAdvogadoId(id).stream()
+            .map(ListaAgendaTarefaDTO::new)
+            .toList();
+    }
     
     /**
     public List<ListaAgendaTarefaDTO> buscarTodasAgendaTarefa() {
