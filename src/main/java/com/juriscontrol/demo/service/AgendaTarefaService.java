@@ -30,6 +30,8 @@ public class AgendaTarefaService {
         Advogado advogado = advogadoRepository.findById(dto.getAdvogadoId())
             .orElseThrow(() -> new AdvogadoNotFoundException("Advogado não encontrado."));
         
+        System.out.println("Advogado encontrado: " + dto.getAdvogadoId());
+        
         AgendaTarefa novaTarefa = new AgendaTarefa();
         novaTarefa.setTitulo(dto.getTitulo());
         novaTarefa.setDescricao(dto.getDescricao());

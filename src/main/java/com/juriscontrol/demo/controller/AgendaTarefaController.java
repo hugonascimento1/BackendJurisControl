@@ -33,7 +33,7 @@ public class AgendaTarefaController {
 
     //post tarefa
     @PostMapping("/cadastrar-tarefa")
-    public ResponseEntity<AgendaTarefa> adicionarAgendaTarefa(CriarAgendaTarefaDTO dto) {
+    public ResponseEntity<AgendaTarefa> adicionarAgendaTarefa(@RequestBody CriarAgendaTarefaDTO dto) {
         
         try {
             AgendaTarefa tarefaNova = agendaTarefaService.criarAgendaTarefa(dto);
